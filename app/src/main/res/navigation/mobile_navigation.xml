@@ -7,12 +7,24 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.map_trips.MapFragment"
+        android:name="com.example.map_trips.view.fragment.MapFragment"
         android:label="@string/title_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_ubicationDetailFragment"
+            app:destination="@id/ubicationDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.map_trips.ProfileFragment"
+        android:name="com.example.map_trips.view.fragment.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <dialog
+        android:id="@+id/ubicationDetailFragment"
+        android:name="com.example.map_trips.view.fragment.UbicationDetailFragment"
+        android:label="UbicationDetailFragment"
+        tools:layout="@layout/fragment_ubication_detail"
+        />
+
 </navigation>
