@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private fun checkSession() {
         if(prefs.getEmail().isNotEmpty()){
             startActivity(Intent(this, HomeActivity::class.java))
+            finish()
         }
     }
 
@@ -32,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
             if(username.isNotEmpty() && username.equals(prefs.getEmail())){
                 startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }else{
                 Toast.makeText(this,"Email incorrecto",Toast.LENGTH_SHORT).show()
             }

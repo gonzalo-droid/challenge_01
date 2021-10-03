@@ -54,15 +54,29 @@ class ProfileFragment : Fragment() {
             tilUpdatePhone.editText?.setText(prefs.getPhone())
 
         }
+        if(prefs.getDate().isNotEmpty()){
+            tilUpdateDate.editText?.setText(prefs.getDate())
+
+        }
 
     }
 
     private fun initUI(){
+
+        tilUpdateDate.editText?.setOnClickListener {
+            val datePicker = DatePickerFragment{day, month, year ->  onDateSelected(day,month,year)}
+            activity?.let { it1 -> datePicker.show(it1?.supportFragmentManager, "datePicker") }
+        }
+
         updateData()
         btnLogout.setOnClickListener {
             prefs.resetData()
             startActivity(Intent(context, LoginActivity::class.java))
         }
+    }
+
+    private fun onDateSelected(day: Int, month: Int, year: Int) {
+        tilUpdateDate.editText?.setText("$day / $month / $year")
     }
 
     private fun updateData() {
@@ -71,6 +85,7 @@ class ProfileFragment : Fragment() {
             var lastname = tilUpdateLastname.editText?.text.toString().trim()
             var email = tilUpdateEmail.editText?.text.toString().trim()
             var phone = tilUpdatePhone.editText?.text.toString().trim()
+            var date = tilUpdateDate.editText?.text.toString().trim()
 
             if(name.isNotEmpty()){
                 prefs.saveName(name)
@@ -80,6 +95,9 @@ class ProfileFragment : Fragment() {
             }
             if(phone.isNotEmpty()){
                 prefs.savePhone(phone)
+            }
+            if(date.isNotEmpty()){
+                prefs.saveDate(date)
             }
 
             if(email.isNotEmpty()){

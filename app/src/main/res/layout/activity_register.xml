@@ -31,7 +31,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="abcdefghijklmnñopqrstuvwxyzáéíóú ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ"
+
             android:drawableTint="@color/teal_700"
             android:hint="Nombre"
             android:inputType="textCapCharacters"
@@ -54,7 +54,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="abcdefghijklmnñopqrstuvwxyzáéíóú ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ"
+
             android:drawableTint="@color/teal_700"
             android:hint="Apellido"
             android:inputType="textCapCharacters"
@@ -121,11 +121,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="abcdefghijklmnñopqrstuvwxyzáéíóú ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ"
+
             android:drawableTint="@color/teal_700"
             android:hint="Fecha de nacimiento"
-            android:inputType="date"
-            android:maxLength="50"
+
+            android:focusable="false"
+            android:clickable="true"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             />
