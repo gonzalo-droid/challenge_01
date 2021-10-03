@@ -78,9 +78,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="abcdefghijklmnñopqrstuvwxyzáéíóú ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ"
             android:drawableTint="@color/teal_700"
-            android:hint="Email"
+            android:hint="Email *"
             android:inputType="textEmailAddress"
             android:maxLength="50"
             android:selectAllOnFocus="true"
@@ -101,11 +100,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="abcdefghijklmnñopqrstuvwxyzáéíóú ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚ"
             android:drawableTint="@color/teal_700"
             android:hint="Celular"
             android:inputType="phone"
-            android:maxLength="50"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             />
@@ -136,7 +133,7 @@
 
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

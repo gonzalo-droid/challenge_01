@@ -18,7 +18,7 @@ import com.example.map_trips.model.UbicationList
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import kotlinx.android.synthetic.main.fragment_ubication_detail.*
 class UbicationDetailFragment : DialogFragment() {
 
 
@@ -53,15 +53,9 @@ class UbicationDetailFragment : DialogFragment() {
 
         for (ubication in list_ubication){
             if(ubication.name.equals(name.toString())){
-                var tvTitle = view.findViewById<TextView>(R.id.tvTitle)
-                var tvCapital = view.findViewById<TextView>(R.id.tvCapital)
-                var tvPeople = view.findViewById<TextView>(R.id.tvPeople)
-                var ivImage = view.findViewById<ImageView>(R.id.ivImage)
-
                 Glide.with(ivImage.context)
                     .load(getResources().getIdentifier(ubication.photo, "drawable", requireContext().packageName))
                     .into(ivImage)
-
                 tvTitle.text= ubication.name
                 tvCapital.text= ubication.capital
                 tvPeople.text= ubication.number_people
