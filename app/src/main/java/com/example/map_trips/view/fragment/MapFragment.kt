@@ -99,16 +99,11 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
     }
 
 
-    private fun isLocationPermissionGranted() =
-        ContextCompat.checkSelfPermission(requireActivity(),
-        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-
-
     private fun enableLocation(){
         // si no esta inicializada return
         if(!::map.isInitialized) return
         // permiso activado
-        if(isLocationPermissionGranted()){
+        if(ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             map.isMyLocationEnabled = true
         }else{
             requestLocationPermission()
@@ -134,7 +129,10 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
     ) {
         when(requestCode){
             REQUEST_CODE_LOCATION -> if(grantResults.isNotEmpty()  && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                map.isMyLocationEnabled = true
+                if(ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                    map.isMyLocationEnabled = true
+                }
+
             }else{
                 Toast.makeText(requireActivity(), "Activa los permisos de GPS", Toast.LENGTH_SHORT).show()
             }
@@ -147,7 +145,7 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
     override fun onResume() {
         super.onResume()
         if(!::map.isInitialized) return
-        if(!isLocationPermissionGranted()){
+        if(ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             map.isMyLocationEnabled = false
             Toast.makeText(requireActivity(), "Activa los permisos de GPS", Toast.LENGTH_SHORT).show()
         }
@@ -155,14 +153,7 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
 
     override fun onMyLocationButtonClick(): Boolean {
 
-        if (ActivityCompat.checkSelfPermission(
-                requireActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireActivity(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             map.isMyLocationEnabled = false
             Toast.makeText(requireActivity(), "Activa los permisos de GPS", Toast.LENGTH_SHORT).show()
         }
