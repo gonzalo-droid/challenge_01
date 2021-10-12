@@ -59,14 +59,6 @@ class UbicationDetailFragment : DialogFragment() {
             if(ubication.name.equals(name.toString())){
 
                 searchByGPS(ubication)
-
-                Glide.with(ivImage.context)
-                    .load(getResources().getIdentifier(ubication.photo, "drawable", requireContext().packageName))
-                    .into(ivImage)
-                tvTitle.text= ubication.name
-                tvTemperature.text= ubication.capital
-                tvHumidity.text= ubication.number_people
-
                 break
             }
 
@@ -88,9 +80,32 @@ class UbicationDetailFragment : DialogFragment() {
             requireActivity().runOnUiThread{
                 if(call.isSuccessful){
                     //show Recyclerview
-                    val wind_speed = data?.wind?.speed
 
-                    Log.d("clouads", wind_speed.toString())
+                    val humidity = data?.main?.humidity.toString()
+                    val temperature = data?.main?.temp.toString()
+                    val clouds = data?.clouds?.all.toString()
+                    val wind = data?.wind?.speed.toString()
+
+                    val icon = data?.weather?.get(0)?.icon.toString()
+
+                    // img de ciudad de las ciudad guardadas en local
+                    Glide.with(ivImage.context)
+                        .load(getResources().getIdentifier(ubication.photo, "drawable", requireContext().packageName))
+                        .into(ivImage)
+
+                    Log.d("icon id", icon)
+                    //icono de  weather
+                    Glide.with(ivIconWeather.context)
+                        .load("https://openweathermap.org/img/wn/$icon@2x.png")
+                        .into(ivIconWeather)
+
+                    tvTitle.text= ubication.name
+                    tvWind.text= wind + " m/s"
+                    tvCloud.text= clouds + " %"
+                    tvHumidity.text= humidity + " %"
+                    tvTemperature.text= temperature + " C°"
+
+
 
                 }else{
                     showError()
