@@ -2,18 +2,14 @@ package com.example.map_trips.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.map_trips.R
-import com.example.map_trips.model.PreferenceApplication
-import com.example.map_trips.model.PreferenceApplication.Companion.prefs
+import com.example.map_trips.data.util.PreferenceApplication.Companion.prefs
 import com.example.map_trips.view.activities.LoginActivity
-import com.google.android.gms.maps.SupportMapFragment
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {

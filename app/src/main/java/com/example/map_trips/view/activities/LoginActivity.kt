@@ -3,11 +3,9 @@ package com.example.map_trips.view.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import android.widget.Toast
 import com.example.map_trips.R
-import com.example.map_trips.model.PreferenceApplication.Companion.prefs
+import com.example.map_trips.data.util.PreferenceApplication.Companion.prefs
 
 import kotlinx.android.synthetic.main.activity_login.*
 

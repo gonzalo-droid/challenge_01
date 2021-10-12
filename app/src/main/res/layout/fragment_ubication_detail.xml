@@ -66,46 +66,115 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="left"
-                        android:text="Capital"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
 
-                    <TextView
-                        android:id="@+id/tvCapital"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="left"
-                        android:text="Chiclayo"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                    >
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
 
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="left"
-                        android:text="Número de habitantes"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        >
 
-                    <TextView
-                        android:id="@+id/tvPeople"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="left"
-                        android:text="123 HB"
-                        android:textColor="@color/cardview_dark_background"
-                        android:textSize="15sp" />
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="left"
+                                    android:text="Temperatura C°"
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            <TextView
+                                    android:id="@+id/tvTemperature"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="left"
+                                    android:text="12 C°"
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="15sp" />
+
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="left"
+                                    android:text="Humedad % "
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            <TextView
+                                    android:id="@+id/tvHumidity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="left"
+                                    android:text="123 HB"
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="15sp" />
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1"
+                        >
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="left"
+                                    android:text="Nubosidad % "
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            <TextView
+                                    android:id="@+id/tvCloud"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="left"
+                                    android:text="123"
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="15sp" />
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="left"
+                                    android:text="Viento m/s "
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            <TextView
+                                    android:id="@+id/tvWind"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="left"
+                                    android:text="123"
+                                    android:textColor="@color/cardview_dark_background"
+                                    android:textSize="15sp" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 

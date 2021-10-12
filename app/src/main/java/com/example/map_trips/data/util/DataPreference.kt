@@ -1,4 +1,4 @@
-package com.example.map_trips.model
+package com.example.map_trips.data.util
 
 import android.content.Context
 

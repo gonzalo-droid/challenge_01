@@ -5,12 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.map_trips.R
-import com.example.map_trips.model.PreferenceApplication
-import com.example.map_trips.model.PreferenceApplication.Companion.prefs
+import com.example.map_trips.data.util.PreferenceApplication.Companion.prefs
 import com.example.map_trips.view.fragment.DatePickerFragment
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
