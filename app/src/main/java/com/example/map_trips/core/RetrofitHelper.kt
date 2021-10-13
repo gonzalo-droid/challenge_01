@@ -25,9 +25,9 @@ object RetrofitHelper {
             .build()
     }
 
-    fun getRetrofitGooglePlaceByID():Retrofit{
+    fun getRetrofitGooglePlaceDetailByID():Retrofit{
         return Retrofit.Builder()
-            .baseUrl("https://maps.googleapis.com/maps/api/place/autocomplete/")
+            .baseUrl("https://maps.googleapis.com/maps/api/place/details/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

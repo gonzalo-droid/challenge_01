@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.map_trips.R
 import com.example.map_trips.core.RetrofitHelper
+import com.example.map_trips.data.model.UbicationDetailModel
 import com.example.map_trips.data.model.entity.PredictionUbication
 import com.example.map_trips.data.model.entity.Ubication
 import com.example.map_trips.data.repository.APIService
@@ -55,6 +56,40 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
     }
 
     override fun onUbicationCliked(ubication: PredictionUbication, position: Int) {
+        var place_id = ubication.place_id
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitHelper.getRetrofitGooglePlaceDetailByID().create(APIService::class.java)
+                .getDataGooglePlaceDetailByID("json?language=es&key=${RetrofitHelper.TOKEN_GOOGLE_PLACE}&place_id=${place_id}")
+
+            val data = call.body()
+
+            //Para poder salir de esa corrutina utilizaremos
+            requireActivity().runOnUiThread {
+                if(call.isSuccessful){
+
+                    //show Recyclerview
+                    val ubicationDetailModel: UbicationDetailModel? = data ?: null
+                    if(ubicationDetailModel != null && ubicationDetailModel.status == "OK"){
+                       val ubicaion = Ubication(
+                           ubicationDetailModel.result.place_id,
+                           ubicationDetailModel.result.formatted_address,
+                           ubicationDetailModel.result.photos[0].photo_reference,
+                           ubicationDetailModel.result.geometry.location.lat,
+                           ubicationDetailModel.result.geometry.location.lng,
+                           "","","","",""
+                       )
+
+
+                    }else{
+                        Toast.makeText(activity, "Sin información del clima", Toast.LENGTH_SHORT).show()
+                    }
+                }else{
+                    showError()
+                }
+            }
+
+        }
+
         Toast.makeText(activity, ubication.place_id, Toast.LENGTH_SHORT ).show()
     }
 

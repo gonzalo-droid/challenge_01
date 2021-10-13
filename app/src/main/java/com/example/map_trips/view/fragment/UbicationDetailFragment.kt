@@ -51,22 +51,8 @@ class UbicationDetailFragment : DialogFragment() {
         }
 
 
-        val name = arguments?.getSerializable("name")
-
-        var list_ubication = UbicationList.getListUbications();
-
-        for (ubication in list_ubication){
-            if(ubication.name.equals(name.toString())){
-
-                searchByGPS(ubication)
-                break
-            }
-
-
-        }
-
-
-
+        val ubication = arguments?.getSerializable("ubication") as Ubication
+        searchByGPS(ubication)
 
     }
 
