@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
     <item
         android:id="@+id/navigation_map"
         android:icon="@drawable/ic_baseline_map_24"
         android:title="Mapa" />
 
     <item
-            android:id="@+id/navigation_search"
-            android:icon="@drawable/ic_close"
-            android:title="Buscar" />
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/icon_search"
+        android:title="Buscar"
+        />
     
     <item
         android:id="@+id/navigation_profile"

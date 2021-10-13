@@ -29,9 +29,7 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onCreateView(
@@ -51,13 +49,13 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
     }
 
     private fun initRecyclerView() {
-        ubicationAdapter = UbicationAdapter(ubications)
+        ubicationAdapter = UbicationAdapter(ubications, this)
         rvUbications.layoutManager = LinearLayoutManager(activity)
         rvUbications.adapter = ubicationAdapter
     }
 
-    override fun onUbicationCliked(ubication: Ubication, position: Int) {
-
+    override fun onUbicationCliked(ubication: PredictionUbication, position: Int) {
+        Toast.makeText(activity, ubication.place_id, Toast.LENGTH_SHORT ).show()
     }
 
     private fun searchUbicationByName(query:String){
@@ -72,9 +70,15 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
                 if(call.isSuccessful){
                     //show Recyclerview
                     val predictions = data?.predictions?: emptyList()
-                    ubications.clear()
-                    ubications.addAll(predictions)
-                    ubicationAdapter.notifyDataSetChanged()
+
+
+                    if(predictions.isNotEmpty()){
+                        ubications.clear()
+                        ubications.addAll(predictions)
+                        ubicationAdapter.notifyDataSetChanged()
+                    }else{
+                        Toast.makeText(activity, "Sin resultados encotrados", Toast.LENGTH_SHORT).show()
+                    }
                 }else{
                     showError()
                 }

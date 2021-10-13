@@ -16,7 +16,7 @@
             android:text="Ubicacion"
             android:textColor="@color/cardview_dark_background"
             android:textSize="15sp"
-            android:drawableStart="@drawable/ic_close"
+            android:drawableStart="@drawable/map_marker_radius"
             android:drawableTint="@color/black"
             />
 </androidx.cardview.widget.CardView>

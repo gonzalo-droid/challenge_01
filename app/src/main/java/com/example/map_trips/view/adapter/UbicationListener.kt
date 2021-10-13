@@ -1,7 +1,8 @@
 package com.example.map_trips.view.adapter
 
-import com.example.map_trips.data.model.entity.Ubication
+import com.example.map_trips.data.model.entity.PredictionUbication
 
 interface UbicationListener {
-    fun onUbicationCliked(ubication: Ubication, position:Int)
+    fun onUbicationCliked(ubication: PredictionUbication, position:Int)
+
 }

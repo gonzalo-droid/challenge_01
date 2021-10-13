@@ -15,7 +15,7 @@
                 android:id="@+id/toolbarSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:title="Mi perfil"
+                android:title="Buscar Ciudades"
                 android:titleTextColor="@color/white"
 
         />
@@ -31,12 +31,21 @@
                 android:id="@+id/svUbications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 app:layout_constraintVertical_bias="0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
 
+                app:queryHint="Descubre el tiempo"
+
         />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/purple_700"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUbications"
