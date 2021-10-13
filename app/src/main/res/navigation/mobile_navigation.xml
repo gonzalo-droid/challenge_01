@@ -16,8 +16,17 @@
         <action
             android:id="@+id/action_mapFragment_to_profileFragment"
             app:destination="@id/navigation_profile" />
+        <action android:id="@+id/action_navigation_map_to_navigation_search" app:destination="@id/navigation_search"/>
     </fragment>
 
+    <fragment
+            android:id="@+id/navigation_search"
+            android:name="com.example.map_trips.view.fragment.SearchFragment"
+            android:label="@string/title_search"
+            tools:layout="@layout/fragment_search" >
+        <action android:id="@+id/action_navigation_search_to_ubicationDetailFragment"
+                app:destination="@id/ubicationDetailFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
