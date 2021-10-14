@@ -51,7 +51,7 @@ class UbicationDetailFragment : DialogFragment() {
         }
 
 
-        val ubication = arguments?.getSerializable("ubication") as Ubication
+        val ubication = arguments?.getSerializable("ubication_id")
         searchByGPS(ubication)
 
     }

@@ -89,22 +89,16 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-
-        var ubication: Ubication? = null
-
         // Informacion del marker a UbicationDetailFragment
         var name = marker.title
 
         var list_ubication = UbicationList.getListUbications();
-        for (item in list_ubication){
-            if(item.name.equals(name.toString())){
-                ubication =  item
+        for (ubication:Ubication in list_ubication){
+            if(ubication.name.equals(name.toString())){
+                val bundle = bundleOf(Pair("ubication_id", ubication.id))
+                findNavController().navigate(R.id.ubicationDetailFragment, bundle)
             }
         }
-
-
-        val bundle = bundleOf("ubication"  to ubication)
-        findNavController().navigate(R.id.ubicationDetailFragment, bundle)
 
         return true
     }

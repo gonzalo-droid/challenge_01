@@ -79,7 +79,6 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
                            "","","","",""
                        )
 
-
                     }else{
                         Toast.makeText(activity, "Sin información del clima", Toast.LENGTH_SHORT).show()
                     }
