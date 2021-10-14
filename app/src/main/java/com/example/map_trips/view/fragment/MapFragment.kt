@@ -95,7 +95,8 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
         var list_ubication = UbicationList.getListUbications();
         for (ubication:Ubication in list_ubication){
             if(ubication.name.equals(name.toString())){
-                val bundle = bundleOf(Pair("ubication_id", ubication.id))
+//                val bundle = bundleOf(Pair("ubication_id", ubication.id))
+                val bundle = bundleOf("ubication" to ubication)
                 findNavController().navigate(R.id.ubicationDetailFragment, bundle)
             }
         }

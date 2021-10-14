@@ -24,7 +24,5 @@ class UbicationList {
             );
             return list_ubication
         }
-
-
     }
 }

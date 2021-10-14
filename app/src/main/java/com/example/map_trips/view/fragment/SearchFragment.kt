@@ -2,6 +2,7 @@ package com.example.map_trips.view.fragment
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.map_trips.R
 import com.example.map_trips.core.RetrofitHelper
@@ -70,14 +73,20 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
                     //show Recyclerview
                     val ubicationDetailModel: UbicationDetailModel? = data ?: null
                     if(ubicationDetailModel != null && ubicationDetailModel.status == "OK"){
-                       val ubicaion = Ubication(
+                        val token= ubicationDetailModel.result.photos[0].photo_reference
+
+                        Log.d("token .place_id", token)
+                       val ubication:Ubication = Ubication(
                            ubicationDetailModel.result.place_id,
                            ubicationDetailModel.result.formatted_address,
-                           ubicationDetailModel.result.photos[0].photo_reference,
+                           token,
                            ubicationDetailModel.result.geometry.location.lat,
                            ubicationDetailModel.result.geometry.location.lng,
                            "","","","",""
                        )
+
+                        val bundle = bundleOf("ubication" to ubication)
+                        findNavController().navigate(R.id.ubicationDetailFragment, bundle)
 
                     }else{
                         Toast.makeText(activity, "Sin información del clima", Toast.LENGTH_SHORT).show()
@@ -89,7 +98,7 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
 
         }
 
-        Toast.makeText(activity, ubication.place_id, Toast.LENGTH_SHORT ).show()
+        Log.d("ubication.place_id", ubication.place_id)
     }
 
     private fun searchUbicationByName(query:String){
