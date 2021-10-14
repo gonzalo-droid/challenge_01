@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="token_weather" templateMergeStrategy="preserve" translatable="false">2bc5b4ec3231b30f22de7eb0e1d54c08</string>
+    <string name="token_google_place" templateMergeStrategy="preserve" translatable="false">AIzaSyCnTp_9Ei1DvvVwqlz0Od8QvRN-unk6aBo</string>
+</resources>
