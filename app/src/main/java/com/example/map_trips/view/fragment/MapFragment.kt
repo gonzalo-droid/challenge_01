@@ -15,6 +15,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.map_trips.R
 import com.example.map_trips.data.model.UbicationList
+import com.example.map_trips.data.model.entity.Ubication
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -88,14 +89,20 @@ class MapFragment : Fragment(), OnMapReadyCallback , GoogleMap.OnMarkerClickList
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-
         // Informacion del marker a UbicationDetailFragment
         var name = marker.title
-        val bundle = bundleOf(Pair("name",name))
-        findNavController().navigate(R.id.ubicationDetailFragment, bundle)
+
+        var list_ubication = UbicationList.getListUbications();
+        for (ubication:Ubication in list_ubication){
+            if(ubication.name.equals(name.toString())){
+//                val bundle = bundleOf(Pair("ubication_id", ubication.id))
+                val bundle = bundleOf("ubication" to ubication)
+                findNavController().navigate(R.id.ubicationDetailFragment, bundle)
+            }
+        }
+
         return true
     }
-
 
     private fun enableLocation(){
         // si no esta inicializada return

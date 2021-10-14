@@ -51,22 +51,8 @@ class UbicationDetailFragment : DialogFragment() {
         }
 
 
-        val name = arguments?.getSerializable("name")
-
-        var list_ubication = UbicationList.getListUbications();
-
-        for (ubication in list_ubication){
-            if(ubication.name.equals(name.toString())){
-
-                searchByGPS(ubication)
-                break
-            }
-
-
-        }
-
-
-
+        val ubication = arguments?.getSerializable("ubication") as Ubication
+        searchByGPS(ubication)
 
     }
 
@@ -90,7 +76,7 @@ class UbicationDetailFragment : DialogFragment() {
 
                     // img de ciudad de las ciudad guardadas en local
                     Glide.with(ivImage.context)
-                        .load(getResources().getIdentifier(ubication.photo, "drawable", requireContext().packageName))
+                        .load(getResources().getIdentifier("chiclayo", "drawable", requireContext().packageName))
                         .into(ivImage)
 
                     Log.d("icon id", icon)

@@ -14,3 +14,4 @@ data class DataModel (
     @SerializedName("name") val name : String,
     @SerializedName("cod") val cod : Int
 )
+

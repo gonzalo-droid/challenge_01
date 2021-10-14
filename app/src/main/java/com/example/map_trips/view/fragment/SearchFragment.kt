@@ -2,6 +2,7 @@ package com.example.map_trips.view.fragment
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.map_trips.R
 import com.example.map_trips.core.RetrofitHelper
+import com.example.map_trips.data.model.UbicationDetailModel
 import com.example.map_trips.data.model.entity.PredictionUbication
 import com.example.map_trips.data.model.entity.Ubication
 import com.example.map_trips.data.repository.APIService
@@ -55,7 +59,46 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
     }
 
     override fun onUbicationCliked(ubication: PredictionUbication, position: Int) {
-        Toast.makeText(activity, ubication.place_id, Toast.LENGTH_SHORT ).show()
+        var place_id = ubication.place_id
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetrofitHelper.getRetrofitGooglePlaceDetailByID().create(APIService::class.java)
+                .getDataGooglePlaceDetailByID("json?language=es&key=${RetrofitHelper.TOKEN_GOOGLE_PLACE}&place_id=${place_id}")
+
+            val data = call.body()
+
+            //Para poder salir de esa corrutina utilizaremos
+            requireActivity().runOnUiThread {
+                if(call.isSuccessful){
+
+                    //show Recyclerview
+                    val ubicationDetailModel: UbicationDetailModel? = data ?: null
+                    if(ubicationDetailModel != null && ubicationDetailModel.status == "OK"){
+                        val token= ubicationDetailModel.result.photos[0].photo_reference
+
+                        Log.d("token .place_id", token)
+                       val ubication:Ubication = Ubication(
+                           ubicationDetailModel.result.place_id,
+                           ubicationDetailModel.result.formatted_address,
+                           token,
+                           ubicationDetailModel.result.geometry.location.lat,
+                           ubicationDetailModel.result.geometry.location.lng,
+                           "","","","",""
+                       )
+
+                        val bundle = bundleOf("ubication" to ubication)
+                        findNavController().navigate(R.id.ubicationDetailFragment, bundle)
+
+                    }else{
+                        Toast.makeText(activity, "Sin información del clima", Toast.LENGTH_SHORT).show()
+                    }
+                }else{
+                    showError()
+                }
+            }
+
+        }
+
+        Log.d("ubication.place_id", ubication.place_id)
     }
 
     private fun searchUbicationByName(query:String){
