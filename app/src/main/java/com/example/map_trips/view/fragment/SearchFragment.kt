@@ -1,6 +1,5 @@
 package com.example.map_trips.view.fragment
 
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,13 +71,19 @@ class SearchFragment : Fragment(), UbicationListener, SearchView.OnQueryTextList
                     //show Recyclerview
                     val ubicationDetailModel: UbicationDetailModel? = data ?: null
                     if(ubicationDetailModel != null && ubicationDetailModel.status == "OK"){
-                        val token= ubicationDetailModel.result.photos[0].photo_reference
+                        var token_photo:String = ""
+                        if(ubicationDetailModel.result.photos != null){
+                             token_photo = ubicationDetailModel.result.photos[0].photo_reference
+                        }
 
-                        Log.d("token .place_id", token)
+
+                        if (token_photo != null) {
+                            Log.d("token .place_id", token_photo)
+                        }
                        val ubication:Ubication = Ubication(
                            ubicationDetailModel.result.place_id,
                            ubicationDetailModel.result.formatted_address,
-                           token,
+                           token_photo,
                            ubicationDetailModel.result.geometry.location.lat,
                            ubicationDetailModel.result.geometry.location.lng,
                            "","","","",""

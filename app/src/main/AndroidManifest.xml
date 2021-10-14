@@ -16,9 +16,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"
             />
-        <activity android:name=".view.activities.HomeActivity"></activity>
-        <activity android:name=".view.activities.RegisterActivity" />
-        <activity android:name=".view.activities.LoginActivity" >
+        <activity android:name=".view.activities.HomeActivity"
+                  android:screenOrientation="portrait"
+        ></activity>
+        <activity android:name=".view.activities.RegisterActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".view.activities.LoginActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

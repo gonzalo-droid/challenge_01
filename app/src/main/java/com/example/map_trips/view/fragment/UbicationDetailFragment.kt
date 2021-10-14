@@ -74,12 +74,22 @@ class UbicationDetailFragment : DialogFragment() {
 
                     val icon = data?.weather?.get(0)?.icon.toString()
 
-                    // img de ciudad de las ciudad guardadas en local
-                    Glide.with(ivImage.context)
-                        .load(getResources().getIdentifier("chiclayo", "drawable", requireContext().packageName))
-                        .into(ivImage)
 
-                    Log.d("icon id", icon)
+
+                    if(ubication.photo != null && ubication.photo != "" ){
+                        Log.d("img-place", ubication.photo)
+
+                        // img google place
+                        Glide.with(ivImage.context)
+                            .load("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=${RetrofitHelper.TOKEN_GOOGLE_PLACE}&photo_reference=${ubication.photo}")
+                            .into(ivImage)
+                    }else{
+                        Glide.with(ivImage.context)
+                            .load(getResources().getIdentifier("github_logo", "drawable", requireContext().packageName))
+                            .preload(500, 300)
+                    }
+
+                    Log.d("img-place", "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=${RetrofitHelper.TOKEN_GOOGLE_PLACE}&photo_reference=${ubication.photo}")
                     //icono de  weather
                     Glide.with(ivIconWeather.context)
                         .load("https://openweathermap.org/img/wn/$icon@2x.png")

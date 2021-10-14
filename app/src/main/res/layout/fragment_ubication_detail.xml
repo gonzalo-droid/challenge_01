@@ -22,7 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        tools:context=".view.fragment.UbicationDetailFragment">
+        tools:context=".view.fragment.UbicationDetailFragment"
+
+    >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -30,7 +32,7 @@
             app:cardCornerRadius="4dp"
             app:cardElevation="1dp"
             android:layout_margin="15dp"
-
+            android:layout_gravity="center_vertical"
             >
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -42,9 +44,10 @@
                 <ImageView
                         android:id="@+id/ivImage"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
+                        android:layout_height="300dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/chiclayo"/>
+                        android:src="@drawable/github_logo"
+                />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -59,7 +62,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:gravity="center_horizontal"
-                            android:text="Lambayeque"
+                            android:text="Ciudad"
                             android:textColor="@color/cardview_dark_background"
                             android:textSize="20sp"
                             android:textStyle="bold"
@@ -84,7 +87,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
-                                android:text="12 C°"
+                                android:text="--"
                                 android:textColor="@color/cardview_dark_background"
                                 android:textSize="20sp"/>
 
