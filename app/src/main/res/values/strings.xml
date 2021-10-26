@@ -8,4 +8,5 @@
     <string name="wifi_connected">Conectado a WIFI</string>
     <string name="lost_connection">Sin conexión</string>
     <string name="data_connected">Conexión a Datos Móviles</string>
+    <string name="permission_ubication_disable">Activa los permisos de GPS</string>
 </resources>
