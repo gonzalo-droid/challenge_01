@@ -11,13 +11,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:title="Buscar"
-            android:titleTextColor="@color/white"
-
+            app:title="Perfil"
+            app:titleTextColor="@color/white"
             />
     </com.google.android.material.appbar.AppBarLayout>
 

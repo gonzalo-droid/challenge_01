@@ -1,5 +1,7 @@
 package com.example.map_trips.core
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.example.map_trips.R
 import okhttp3.HttpUrl
@@ -7,11 +9,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-object RetrofitHelper {
+object RetrofitHelper: Application() {
 
-//    const val TOKEN = R.string.token_weather
-//    const val TOKEN_GOOGLE_PLACE = R.string.token_google_place
-
+/*
+    const val TOKEN  = R.string.token_weather
+    const val TOKEN_GOOGLE_PLACE = R.string.token_google_place
+*/
     const val TOKEN = "2bc5b4ec3231b30f22de7eb0e1d54c08"
     const val TOKEN_GOOGLE_PLACE = "AIzaSyCnTp_9Ei1DvvVwqlz0Od8QvRN-unk6aBo"
 

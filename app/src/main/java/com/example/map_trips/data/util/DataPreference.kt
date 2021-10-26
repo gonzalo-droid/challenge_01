@@ -11,6 +11,8 @@ class DataPreference(val context:Context) {
     val SHARE_PHONE = "phone"
     val SHARE_DATE = "date"
 
+    val SHARE_CONNECTION = "connection"
+
     val storage = context.getSharedPreferences(SHARE_DATA, 0)
 
     fun saveName(name:String){
@@ -33,6 +35,10 @@ class DataPreference(val context:Context) {
         storage.edit().putString(SHARE_DATE, date).apply()
     }
 
+    fun saveConnection(connection:String){
+        storage.edit().putString(SHARE_CONNECTION, connection).apply()
+    }
+
     fun getName():String{
         return storage.getString(SHARE_NAME, "")!!
     }
@@ -51,6 +57,9 @@ class DataPreference(val context:Context) {
 
     fun getDate():String{
         return storage.getString(SHARE_DATE, "")!!
+    }
+    fun getConnection():String{
+        return storage.getString(SHARE_CONNECTION, "")!!
     }
     fun resetData(){
         storage.edit().clear().apply()

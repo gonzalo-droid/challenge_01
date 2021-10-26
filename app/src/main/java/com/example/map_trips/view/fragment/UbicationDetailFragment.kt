@@ -57,6 +57,10 @@ class UbicationDetailFragment : DialogFragment() {
     }
 
     private fun searchByGPS(ubication: Ubication) {
+
+        Log.i("TOKEN_WEATHER ", RetrofitHelper.TOKEN.toString());
+        Log.i("TOKEN_PLACE: ", RetrofitHelper.TOKEN_GOOGLE_PLACE.toString());
+
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetrofitHelper.getRetrofit().create(APIService::class.java)
                 .getDataUbication("weather?appid=${RetrofitHelper.TOKEN}&lang=es&units=metric&lat=${ubication.latitude}&lon=${ubication.longitude}")

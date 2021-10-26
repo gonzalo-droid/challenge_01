@@ -5,4 +5,7 @@
     <string name="title_profile">Perfil</string>
     <string name="title_search">Buscar</string>
     <string name="title_map">Mapa</string>
+    <string name="wifi_connected">Conectado a WIFI</string>
+    <string name="lost_connection">Sin conexión</string>
+    <string name="data_connected">Conexión a Datos Móviles</string>
 </resources>

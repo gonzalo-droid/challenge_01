@@ -2,10 +2,8 @@ package com.example.map_trips.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.example.map_trips.R
 import com.example.map_trips.data.util.PreferenceApplication.Companion.prefs
@@ -16,6 +14,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -31,6 +30,7 @@ class ProfileFragment : Fragment() {
         setData()
         initUI()
 
+        statusConnection()
 
     }
 
@@ -58,6 +58,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initUI(){
+
+        toolbarProfile.inflateMenu(R.menu.menu_toolbar)
 
         tilUpdateDate.editText?.setOnClickListener {
             val datePicker = DatePickerFragment{day, month, year ->  onDateSelected(day,month,year)}
@@ -107,7 +109,30 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_toolbar, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.btn_connection -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun statusConnection() {
+        toolbarProfile.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.btn_connection -> {
+                    Toast.makeText(activity, prefs.getConnection(), Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 
 
 }

@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,16 +18,25 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"
             />
+
+        <receiver android:name=".data.util.MyBroadcastReceiver"  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+            </intent-filter>
+        </receiver>
+
+
         <activity android:name=".view.activities.HomeActivity"
-                  android:screenOrientation="portrait"
-        ></activity>
+                  android:screenOrientation="portrait">
+        </activity>
+
+
         <activity android:name=".view.activities.RegisterActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".view.activities.LoginActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
